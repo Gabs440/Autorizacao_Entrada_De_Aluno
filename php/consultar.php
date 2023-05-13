@@ -27,10 +27,10 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 	</script>
 
 	
-	<!--botão de filtro de registros. STATUS: NÃO FUNCIONANDO O SISTEMA DE FILTRAGEM.-->
+	<!--botão de filtro de registros. STATUS: NÃO FUNCIONANDO O SISTEMA DE FILTRAGEM.
 	<div>
 		<button class="button-filtrar">Filtrar</button>
-	</div>
+	</div>-->
 
 
 	<!--Tabela que conterá os registros da tabela tbregistro -->
@@ -39,18 +39,18 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 			<!--Esta é a primeira Linha da coluna, nela apresenta o nome da coluna e o campo para filtragem-->
 			<tr>
 				<th class="flex-container">RM 
-					<div>
+					<!--<div>
 						<input type="text" name="filtro_rm" value="Filtrar" onclick="limparFiltro(this)" class="filtro-opaco">
-					</div>
+					</div>-->
 				</th>
 				
 				<th class="flex-container">Aluno
-					<div>
+					<!--<div>
 						<input type="text" id="filtro-aluno" value="Filtrar" onclick="limparFiltro(this)" class="filtro-opaco">
-					</div>
+					</div>-->
 				</th>
 				<th>Turma
-					<div>
+					<!--<div>
 						<select id="filtro-turma" value="Filtrar" class="filtro-opaco">
 							<option value="">Todos</option>
 							<option value="1°A">1°A</option>
@@ -86,28 +86,27 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 							<option value="3°L">3°L</option>
 							<option value="3°M">3°M</option>
 						</select>
-					</div>
+					</div>-->
 				</th>
                 <th>Data de Atraso
-					<div>
+					<!--<div>
 						<input type="date" id="filtro-data" class="filtro-opaco">
-					</div>
+					</div>-->
 				</th>
 				<th>Horário de Entrada
-					<div>
+					<!--<div>
 						<input type="time" id="filtro-hora" class="filtro-opaco">
-					</div>
+					</div>-->
 				</th>
                 <th>Motivo
-					<div>
+					<!--<div>
 						<select id="filtro-motivo" class="filtro-opaco">
 							<option values="">Todos</option>
 							<option values="Médico">Médico</option>
 							<option values="Transporte">Transporte</option>
 							<option values="Pessoaç">Pessoal</option>
 						</select>
-					</div>
-					
+					</div>-->
 				</th>
 			</tr>
 		</thead>
@@ -127,7 +126,7 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 				<?php
 			}
 			?>
-			<?
+			<!--?
 			if(!empty($_POST)){
 				$result_usuario .= "WHERE (1=1) ";
 				if($_POST["filtro_rm"]!=""){
@@ -135,7 +134,7 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 					$result_usuario .= " AND filtro_rm LIKE '%$rm%' ";
 				}
 			}
-			?>
+			?>-->
 
 			
 		</tbody>

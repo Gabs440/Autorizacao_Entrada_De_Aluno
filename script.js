@@ -35,9 +35,8 @@ function validateFields() {
   var nomeInput = document.getElementsByName("nomealuno")[0];
   var serieInput = document.getElementsByName("serie")[0];
   var cursoInput = document.getElementsByName("curso")[0];
-  var motivoInput = document.getElementsByName("motivo")[0];
 
-  if (rmInput.value == "" || nomeInput.value == "" || serieInput.value == "" || cursoInput.value == "" || motivoInput.value == "") {
+  if (rmInput.value == "" || nomeInput.value == "" || serieInput.value == "" || cursoInput.value == "") {
     alert("Por favor, preencha todos os campos.");
     return false;
   }
