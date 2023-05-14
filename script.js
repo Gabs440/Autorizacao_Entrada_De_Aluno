@@ -75,6 +75,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function limparFiltro(elemento){
+/*function limparFiltro(elemento){
   elemento.value = "";
+}*/
+
+
+function imprimir() {
+  // Ocultar as informações que você deseja ocultar
+  var elementosOcultos = document.getElementsByClassName('oculto');
+  for (var i = 0; i < elementosOcultos.length; i++) {
+    elementosOcultos[i].style.display = 'none';
+  }
+  
+  // Executar a função de impressão
+  window.print();
 }

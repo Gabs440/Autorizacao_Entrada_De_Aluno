@@ -26,13 +26,6 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 		}
 	</script>
 
-	
-	<!--botão de filtro de registros. STATUS: NÃO FUNCIONANDO O SISTEMA DE FILTRAGEM.
-	<div>
-		<button class="button-filtrar">Filtrar</button>
-	</div>-->
-
-
 	<!--Tabela que conterá os registros da tabela tbregistro -->
 	<table class="table table-striped table-bordered table-hover float-lg-start">
 		<thead>
@@ -88,12 +81,12 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 						</select>
 					</div>-->
 				</th>
-                <th>Data de Atraso
+                <th>Data
 					<!--<div>
 						<input type="date" id="filtro-data" class="filtro-opaco">
 					</div>-->
 				</th>
-				<th>Horário de Entrada
+				<th>Hora
 					<!--<div>
 						<input type="time" id="filtro-hora" class="filtro-opaco">
 					</div>-->
@@ -177,6 +170,11 @@ $max_links = 2;
 	}
 	echo '<li class="page-item">';
 	echo "<span class='page-link'><a href='#' onclick='listar_usuario($quantidade_pg, $qnt_result_pg)'>Última</a></span>";
+	echo '</li>';
+	echo '</ul>';
+	echo '<ul class="pagination justify-content-center">';
+	echo '<li class="page-item">';
+	echo "<button class='page-link' onClick='window.print()'>Imprimir</button>";
 	echo '</li>';
 	echo '</ul>';
 	echo '</nav>';

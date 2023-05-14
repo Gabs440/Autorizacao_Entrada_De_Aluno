@@ -176,8 +176,41 @@ input[type=number]::-webkit-outer-spin-button {
   transition: 0.5s ease;
 }
 
-.flex-container1{
-  display: flex;
+.container{
+  margin: 4%;
+}
+
+.headingconsulta {
+  width: 100%;
+  text-align: center;
+  background-color: #e67833;
+  padding: 3vh;
+  font-size: 18px;
+  transition: 0.5s all;
+}
+
+@media (max-width: 400px) {
+  .headingconsulta {
+    font-size: 2vh;
+    transition: 0.5s all;
+  }
+}
+
+.botaoimprimir{
+  margin-left: 45%;
+  width: 120px;
+  background-color: #e67833;
+  color: #fff;
+  border: none;
+  border-radius: 1vh;
+  padding: 1vh 1vh;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+  
+.botaoimprimir:hover {
+  transition: 0.5s ease;
+  background-color: #9b5021;
 }
 
 /*.filtro-opaco{
