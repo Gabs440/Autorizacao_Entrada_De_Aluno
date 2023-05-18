@@ -1,41 +1,51 @@
-#logos{
-  width: 99.99%;
-  background-position: -80px center;
-  position: relative;
-  height: 14vh;
-  text-align: center;
+.fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/fundo.jpeg);
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-color: #FFFFFF;
+  filter: contrast(150%) opacity(40%) saturate(150%);
+  z-index: -1;
+}
+
+#logos{
+  background-position: -80px center;
+  height: 60px;
+  text-align: center;
+
   overflow: hidden;
+  z-index: 1;
 }
 
 #eteclogo{
-  width: 20vh;
+  width: 15vh;
   top: 1vh;
-  position: relative;
 }
 
 #cpslogo{
-  width: 80vh;
-  top:-0vh;
-  left: 7vh;
-  position: relative
+  width: 350px;
 }
   
 .actual-form {
+  background-color: #fff;
   padding: 0vh 5vh 5vh;
   height: 80%;
   width: 40%;
-  margin: 4vh auto;
+  margin: 0vh auto;
   font-family: 'Arial', sans-serif;
   border: 0.5vh solid #e67833;
   border-radius: 1vh;
   overflow: hidden;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {
   .actual-form {
-    width: 80%;
+    width: 75%;
     transition: 0.2s all;
   }
 }
@@ -46,7 +56,7 @@
   background-color: #e67833;
   border-radius: 0vh 0vh 1vh 1vh;
   padding: 3vh;
-  font-size: 18px;
+  font-size: 17px;
   transition: 0.5s all;
 }
 
@@ -131,9 +141,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btn {
-	margin-top: 10px;
+  border-top: 1px solid #e67833 ;
+  padding-top: 20px;
+	margin-top: 20px;
   align-items: center;
-  width: 100%;
+  margin-left: 10%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -175,9 +188,23 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
   transition: 0.5s ease;
 }
-
 .container{
   margin: 4%;
+  width:100%;
+  padding:10px;
+  border-radius: 1vh;
+  background-color: #fff;
+  z-index: 1;
+}
+@media (max-width: 768px){
+  .container{
+    margin: 4%;
+    width:120%;
+    padding:10px;
+    border-radius: 1vh;
+    background-color: #fff;
+    z-index: 1;
+  }
 }
 
 .headingconsulta {

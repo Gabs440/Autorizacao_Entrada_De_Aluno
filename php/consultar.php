@@ -27,83 +27,23 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 	</script>
 
 	<!--Tabela que conterá os registros da tabela tbregistro -->
-	<table class="table table-striped table-bordered table-hover float-lg-start">
+	<table class="table table-striped table-bordered table-hover float-lg-start table-light">
+		<div class='input-group flex-nowrap'>
+			<a href="filtro.html" name="filtragem" target="_blank"><button class='page-link'>Buscar</button></a>
+			<input type='text' class='form-control' placeholder='Filtrar por RM' aria-label='Username' aria-describedby='addon-wrapping'>
+		  </div>
 		<thead>
 			<!--Esta é a primeira Linha da coluna, nela apresenta o nome da coluna e o campo para filtragem-->
 			<tr>
-				<th class="flex-container">RM 
-					<!--<div>
-						<input type="text" name="filtro_rm" value="Filtrar" onclick="limparFiltro(this)" class="filtro-opaco">
-					</div>-->
-				</th>
-				
-				<th class="flex-container">Aluno
-					<!--<div>
-						<input type="text" id="filtro-aluno" value="Filtrar" onclick="limparFiltro(this)" class="filtro-opaco">
-					</div>-->
-				</th>
-				<th>Turma
-					<!--<div>
-						<select id="filtro-turma" value="Filtrar" class="filtro-opaco">
-							<option value="">Todos</option>
-							<option value="1°A">1°A</option>
-							<option value="1°B">1°B</option>
-							<option value="1°C">1°C</option>
-							<option value="1°D">1°D</option>
-							<option value="1°E">1°E</option>
-							<option value="1°F">1°F</option>
-							<option value="1°I">1°I</option>
-							<option value="1°K">1°K</option>
-							<option value="1°L">1°L</option>
-							<option value="1°M">1°M</option>
-
-							<option value="2°A">2°A</option>
-							<option value="2°B">2°B</option>
-							<option value="2°C">2°C</option>
-							<option value="2°D">2°D</option>
-							<option value="2°E">2°E</option>
-							<option value="2°F">2°F</option>
-							<option value="2°I">2°I</option>
-							<option value="2°K">2°K</option>
-							<option value="2°L">2°L</option>
-							<option value="2°M">2°M</option>
-
-							<option value="3°A">3°A</option>
-							<option value="3°B">3°B</option>
-							<option value="3°C">3°C</option>
-							<option value="3°D">3°D</option>
-							<option value="3°E">3°E</option>
-							<option value="3°F">3°F</option>
-							<option value="3°I">3°I</option>
-							<option value="3°K">3°K</option>
-							<option value="3°L">3°L</option>
-							<option value="3°M">3°M</option>
-						</select>
-					</div>-->
-				</th>
-                <th>Data
-					<!--<div>
-						<input type="date" id="filtro-data" class="filtro-opaco">
-					</div>-->
-				</th>
-				<th>Hora
-					<!--<div>
-						<input type="time" id="filtro-hora" class="filtro-opaco">
-					</div>-->
-				</th>
-                <th>Motivo
-					<!--<div>
-						<select id="filtro-motivo" class="filtro-opaco">
-							<option values="">Todos</option>
-							<option values="Médico">Médico</option>
-							<option values="Transporte">Transporte</option>
-							<option values="Pessoaç">Pessoal</option>
-						</select>
-					</div>-->
-				</th>
+				<th>RM</th>
+				<th>Aluno</th>
+				<th>Turma</th>
+                <th>Data</th>
+				<th>Hora</th>
+                <th>Motivo</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="table-group-divider">
 			<?php
 			//Sistema que irá percorrer as linhas da tabela e exibir os registros
 			while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
@@ -118,18 +58,17 @@ $resultado_usuario = mysqli_query($conexao, $result_usuario);
 				</tr>
 				<?php
 			}
-			?>
-			<!--?
-			if(!empty($_POST)){
+			
+
+			/*if(!empty($_POST)){
 				$result_usuario .= "WHERE (1=1) ";
 				if($_POST["filtro_rm"]!=""){
 					$rm = $_POST["filtro_rm"];
 					$result_usuario .= " AND filtro_rm LIKE '%$rm%' ";
 				}
-			}
-			?>-->
+			}*/
+			?>
 
-			
 		</tbody>
 	</table>
 	
