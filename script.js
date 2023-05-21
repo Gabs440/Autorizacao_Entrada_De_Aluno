@@ -9,7 +9,6 @@ function validateForm() {
 }
 
 
-
 //CASO TENHA ALGUM OUTRO MOTIVO PARA O ATRASO PODERÁ PREENCHER O CAMPO
 function showHideInput() {
   var select = document.getElementsByName("motivo")[0];
@@ -28,7 +27,6 @@ function showHideInput() {
 }
 
 
-
 //VAI VALIDAR SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
 function validateFields() {
   var rmInput = document.getElementsByName("RM")[0];
@@ -43,7 +41,6 @@ function validateFields() {
 
   return true;
 }
-
 
 
 /*VAI PEGAR A MENSAGEM DE INSERÇÃO DA TABELA PARA EXIBIR NA PRÓPRIA TELA DO INDEX, 
@@ -73,11 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("mensagem").style.display = "none";
   });
 });
-
-
-/*function limparFiltro(elemento){
-  elemento.value = "";
-}*/
 
 
 function imprimir() {
