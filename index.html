@@ -66,9 +66,9 @@
             required>
 
             <option value="">Série</option>
-            <option value="1º">1º</option>
-            <option value="2º">2º</option>
-            <option value="3º">3º</option>
+            <option value="1°">1º</option>
+            <option value="2°">2º</option>
+            <option value="3°">3º</option>
           </select>
 
           <select
@@ -103,8 +103,11 @@
 
             <option value="">Qual o motivo do atraso?</option>
             <option value="Transporte">Transporte</option>
-            <option value="Médico">Médico</option>
-            <option value="Pessoal">Pessoal</option>
+            <option value="Bilhete">Bilhete</option>
+            <option value="Atraso em casa">Atraso em casa</option>
+            <option value="Medico">Médico</option>
+            <option value="Atraso por causa de familiar">Atraso por causa de familiar</option>
+            <option value="Trabalhou até mais tarde">Trabalhou até mais tarde</option>
             <option value="Outro">Outro</option>
           </select>
           <input 
@@ -137,8 +140,17 @@
       <hr>
       <form action="php/consultar.php" target="_blank" method="POST">
         <h4 class="fs-5">Consultar  registros por filtro</h4>
-        <p>Informe o RM e clique em "Buscar"</p>
-        <input type='number' class="input-rm" name='filtro_rm' placeholder='Filtrar por RM'>
+        <p>Informe os campos que queira filtrar:</p>
+        <input type='number' class="input-filtro" name='filtro_rm' placeholder='Filtrar por RM'>
+        <input type='text' class="input-filtro" name='filtro_nome' placeholder='Filtrar por Nome'>
+        <input type='text' class="input-filtro" name='filtro_turma' placeholder='Filtrar por Turma'>
+        <hr>
+        <h4>Filtro entre um período específico:</h4>
+        <p>Primeira Data:</p>
+        <input type='date' class="input-filtro" name='filtro_primeira_data' placeholder='Primeira Data'>
+        <p>Segunda Data:</p>
+        <input type='date' class="input-filtro" name='filtro_segunda_data' placeholder='Segunda Data'>
+        <hr>
         <button type='submit' class="sign-btn">Buscar</button>
       </form> 
     </dialog>

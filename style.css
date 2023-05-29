@@ -117,8 +117,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 0.5vh;
 }
 
-.input-rm {
-  width: 40%;
+.input-filtro {
+  width: 100%;
   padding: 1vh;
   border: 0.2vh solid #aeaeae;
   border-radius: 1vh;
@@ -230,6 +230,7 @@ dialog {
 }
 
 .btn-close{
+  margin-left: 10px;
   color: grey;
   float: right;
   font-size: 20px;

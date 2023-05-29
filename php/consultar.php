@@ -8,6 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Consulta</title>
 </head>
 
@@ -21,14 +22,44 @@ $qnt_result_pg = filter_input(INPUT_POST, 'qnt_result_pg', FILTER_SANITIZE_NUMBE
 //calcular o inicio visualização
 $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-if (isset($_POST['filtro_rm'])) {
-	$rm = $_POST['filtro_rm'];
-	$result_usuario = "SELECT * FROM tbregistro WHERE RM = '$rm' ORDER BY data DESC, hora DESC";
-	$resultado_usuario = mysqli_query($conexao, $result_usuario);
+if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['filtro_turma']) || isset($_POST['filtro_primeira_data']) || isset($_POST['filtro_segunda_data'])) {
+	
+	$rm = isset($_POST['filtro_rm']) ? $_POST['filtro_rm'] : '';
+	$nome = isset($_POST['filtro_nome']) ? $_POST['filtro_nome'] : '';
+	$turma = isset($_POST['filtro_turma']) ? $_POST['filtro_turma'] : '';
+	$data_inicio = isset($_POST['filtro_primeira_data']) ? $_POST['filtro_primeira_data'] : '';
+	$data_fim = isset($_POST['filtro_segunda_data']) ? $_POST['filtro_segunda_data'] : '';
+
+	// Monta a query base
+	$query = "SELECT * FROM tbregistro WHERE 1=1";
+
+	// Adiciona os filtros à query, se estiverem definidos
+	if (!empty($rm)) {
+		$query .= " AND RM = '$rm'";
+	}
+	if (!empty($nome)) {
+		$query .= " AND nomealuno LIKE '%$nome%'";
+	}
+	if (!empty($turma)) {
+		$query .= " AND serie_curso = '$turma'";
+	}
+	if (!empty($data_inicio) && !empty($data_fim)) {
+		$query .= " AND data BETWEEN '$data_inicio' AND '$data_fim'";
+	}
+
+	// Ordena a query
+	$query .= " ORDER BY data DESC, hora DESC";
+
+	// Executa a query
+	$resultado_usuario = mysqli_query($conexao, $query);
+
+	$contabilizar = mysqli_num_rows($resultado_usuario);
 
 	//Verificar se encontrou resultado na tabela "tbregistro"
 	if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
 		?>
+		<body>
+    
 			<div id="logos"style="">
 				<!--<img id="eteclogo" src="img/etec.png">-->
 				<img id="cpslogo" src="../img/sp.png">
@@ -73,8 +104,75 @@ if (isset($_POST['filtro_rm'])) {
 					</tbody>
 				</table>
 			</div>
-		<?php
 
+			<div id="curve_chart" style="width: 100%; height: 500px; align-text: center,"></div>
+  		</body>
+
+		<script type="text/javascript">
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+				["Data", "Quantidade de Registros"],
+				<?php
+				$query_contagem = "SELECT MONTH(data) AS mes, COUNT(*) AS qtde_registros FROM tbregistro WHERE 1=1";
+
+				// Adicione os mesmos filtros à query de contagem
+				if (!empty($rm)) {
+					$query_contagem .= " AND RM = '$rm'";
+				}
+				if (!empty($nome)) {
+					$query_contagem .= " AND nomealuno LIKE '%$nome%'";
+				}
+				if (!empty($turma)) {
+					$query_contagem .= " AND serie_curso = '$turma'";
+				}
+				if (!empty($data_inicio) && !empty($data_fim)) {
+					$query_contagem .= " AND data BETWEEN '$data_inicio' AND '$data_fim'";
+				}
+
+				// Agrupe os resultados por mês
+				$query_contagem .= " GROUP BY MONTH(data)";
+
+				// Executa a query de contagem
+				$resultado_contagem = mysqli_query($conexao, $query_contagem);
+
+				// Array para armazenar os dados do gráfico
+				$dados_grafico = array();
+
+				// Loop para obter os resultados e adicionar ao array de dados do gráfico
+				while ($row = mysqli_fetch_assoc($resultado_contagem)) {
+					$mes = $row['mes'];
+					$qtde_registros = $row['qtde_registros'];
+					$mes_nome = DateTime::createFromFormat('!m', $mes)->format('F'); // Obtém o nome do mês
+
+					// Adicione os dados do mês e quantidade de registros ao array
+					$dados_grafico[] = array($mes_nome, $qtde_registros);
+				}
+
+				foreach ($dados_grafico as $dados) {
+					$mes_nome = $dados[0];
+					$qtde_registros = $dados[1];
+
+					echo "['$mes_nome', $qtde_registros],";
+				}
+				?>
+				]);
+
+				var options = {
+				title: 'Quantidade de atrasos por mês',
+				curveType: 'function',
+				legend: { position: 'bottom' }
+				};
+
+				var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+				chart.draw(data, options);
+			}
+		</script>
+
+		<?php
 	}
 	else{
 		echo "<div class='alert alert-danger' role='alert'>Nenhum aluno encontrado!</div>";
