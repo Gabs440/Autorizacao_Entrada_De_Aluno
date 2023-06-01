@@ -5,79 +5,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" type="text/css"/>
-    <link rel="icon" href="img/etec.png" type="image/png"/>  
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="icon" href="img/etec.png" type="image/png" />  
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <title>Autorização</title>
+    <title> Autorização </title>
   </head>
 
   <body>
     <section class="cabecalho">
-      
       <div>
-        <a href="index.html">Início</a>
-        <a href="#"id="abrirmodal">Consultar</a>
+        <a href="index.html"> Início </a>
+        <a href="#" id="abrirmodal"> Consultar </a>
       </div>
     </section>
+
     <div id="logos">
-      <!--<img id="eteclogo" src="img/etec.png">-->
       <img id="cpslogo" src="img/sp.png">
     </div>
+
     <img class="fundo" src="img/fundo.jpeg">
     
-    <form name="tbregistro" id="form-registro" action="php/inserir.php" method="post" onsubmit="return validateForm()">
-     
+    <form id="form-registro" name="tbregistro" action="php/inserir.php" method="post" onsubmit="return validateForm()">
       <div class="actual-form">
-        <div class="heading"><b class="titulo">AUTORIZAÇÃO PARA ENTRADA</b></div>
-      
-        <div class="input-wrap" >
-          <label  class="input-label">RM:</label>
-          <input
-            name="RM"
-            type="number"
-            class="input-field"
-            required
-          />
+
+        <div class="heading">
+          <b class="titulo">AUTORIZAÇÃO PARA ENTRADA</b>
+        </div>
+
+        <div class="input-wrap">
+          <label class="input-label"> RM: </label>
+          <input name="RM" type="number" class="input-field"/>
         </div>  
               
         <div class="input-wrap">
           <label class="input-label">Nome:</label>
-          <input
-            name="nomealuno"
-            type="text"
-            minlength="3"
-            class="input-field"
-            autocomplete="off"
-            required
-          />
+          <input name="nomealuno" type="text" class="input-field" minlength="3" />
 			  </div>
 
         <div class="input-wrap">
           <label class="input-label">Módulo/Curso:</label>
-          <select
-            name="serie"
-            type="text"
-            class="input-option"
-            autocomplete="off"
-            required>
-
+          <select name="serie" type="text" class="input-option">
             <option value="">Série</option>
             <option value="1°">1º</option>
             <option value="2°">2º</option>
             <option value="3°">3º</option>
           </select>
 
-          <select
-            name="curso"
-            type="text"
-            class="input-option"
-            autocomplete="off"
-            required>
-
+          <select name="curso" type="text" class="input-option">
             <option value="">Curso</option>
             <option value="A">A</option>
             <option value="B">B</option>
@@ -94,32 +72,21 @@
 
         <div class="input-wrap">
           <label class="input-label">Motivo:</label>
-          <select 
-            name="motivo" 
-            class="input-option"
-            autocomplete="off" 
-            required
-            onchange="showHideInput()">
-
-            <option value="">Qual o motivo do atraso?</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Bilhete">Bilhete</option>
-            <option value="Atraso em casa">Atraso em casa</option>
-            <option value="Medico">Médico</option>
-            <option value="Atraso por causa de familiar">Atraso por causa de familiar</option>
-            <option value="Trabalhou até mais tarde">Trabalhou até mais tarde</option>
-            <option value="Outro">Outro</option>
+          <select name="motivo" class="input-option" onchange="showHideInput()">
+            <option value=""> Qual o motivo do atraso? </option>
+            <option value="Transporte"> Transporte </option>
+            <option value="Bilhete"> Bilhete </option>
+            <option value="Atraso em casa"> Atraso em casa </option>
+            <option value="Medico" >Médico </option>
+            <option value="Atraso por causa de familiar"> Atraso por causa de familiar </option>
+            <option value="Trabalhou até mais tarde"> Trabalhou até mais tarde </option>
+            <option value="Outro"> Outro </option>
           </select>
-          <input 
-            type="text" 
-            name="outro_motivo" 
-            id="outro_motivo"
-            class="input-field"
-          />
+          <input type="text" name="outro_motivo" id="outro_motivo" class="input-field"/>
         </div>
 
         <div class="btn">
-          <input id="enviar" type="submit" name="enviar" value="Registrar"class="sign-btn" onclick="enviarFormulario(event)"/>
+          <input id="enviar" name="enviar" type="submit"  value="Registrar"class="sign-btn" onclick="enviarFormulario(event)"/>
         </div>
 
         <div id="mensagem" class="popup">
@@ -134,32 +101,35 @@
     </form>
 
     <dialog id="modal">
+
       <span id="fechar-consulta" type="button" class="btn-close" aria-label="Close">x</span>
-      <h4 class="fs-5">Consultar todos os registros</h4>
-      <a href="consulta.html" name="consulta" value="consultar">Consultar</a>
+      <h4 class="fs-5"> Consultar todos os registros </h4>
+      <a href="consulta.html"  value="consultar"> Consultar </a>
       <hr>
-      <form action="php/consultar.php" target="_blank" method="POST">
-        <h4 class="fs-5">Consultar  registros por filtro</h4>
+
+      <form action="php/consultar.php" method="POST" target="_blank" >
+        <h4 class="fs-5"> Consultar  registros por filtro </h4>
         <p>Informe os campos que queira filtrar:</p>
-        <input type='number' class="input-filtro" name='filtro_rm' placeholder='Filtrar por RM'>
-        <input type='text' class="input-filtro" name='filtro_nome' placeholder='Filtrar por Nome'>
-        <input type='text' class="input-filtro" name='filtro_turma' placeholder='Filtrar por Turma'>
+        <input name="filtro_rm"     type="number" class="input-filtro"  placeholder="Filtrar por RM" />
+        <input name="filtro_nome"   type="text"   class="input-filtro"  placeholder="Filtrar por Nome" />
+        <input name="filtro_turma"  type="text"   class="input-filtro"  placeholder="Filtrar por Turma" />
         <hr>
-        <h4>Filtro entre um período específico:</h4>
-        <p>Primeira Data:</p>
-        <input type='date' class="input-filtro" name='filtro_primeira_data' placeholder='Primeira Data'>
-        <p>Segunda Data:</p>
-        <input type='date' class="input-filtro" name='filtro_segunda_data' placeholder='Segunda Data'>
+        <h4> Filtro entre um período específico: </h4>
+        <p> Primeira Data: </p>
+        <input name="filtro_primeira_data"  type="date" class="input-filtro"  placeholder="Primeira Data" />
+        <p> Segunda Data: </p>
+        <input name="filtro_segunda_data"   type="date" class="input-filtro"  placeholder="Segunda Data" />
         <hr>
-        <button type='submit' class="sign-btn">Buscar</button>
-      </form> 
+        <button type="submit" class="sign-btn"> Buscar </button>
+      </form>
+
     </dialog>
 
   </body>
 
   <script>
-    const button = document.querySelector("#abrirmodal")
-    const modal = document.querySelector("#modal")
+    const button      = document.querySelector("#abrirmodal")
+    const modal       = document.querySelector("#modal")
     const buttonClose = document.querySelector("#fechar-consulta")
 
     button.onclick = function() {

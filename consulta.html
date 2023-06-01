@@ -22,30 +22,32 @@
     </section>
 
     <div id="logos">
-      <!--<img id="eteclogo" src="img/etec.png">-->
       <img id="cpslogo" src="img/sp.png">
     </div>
   
     <dialog id="modal">
+
       <span id="fechar-consulta" type="button" class="btn-close" aria-label="Close">x</span>
       <h4 class="fs-5">Consultar todos os registros</h4>
       <a href="consulta.html" name="consulta" value="consultar">Consultar</a>
       <hr>
+
       <form action="php/consultar.php" target="_blank" method="POST">
         <h4 class="fs-5">Consultar  registros por filtro</h4>
         <p>Informe os campos que queira filtrar:</p>
-        <input type='number' class="input-filtro" name='filtro_rm' placeholder='Filtrar por RM'>
-        <input type='text' class="input-filtro" name='filtro_nome' placeholder='Filtrar por Nome'>
-        <input type='text' class="input-filtro" name='filtro_turma' placeholder='Filtrar por Turma'>
+        <input name="filtro_rm"    type="number"  class="input-filtro"  placeholder="Filtrar por RM">
+        <input name="filtro_nome"  type="text"    class="input-filtro"  placeholder="Filtrar por Nome">
+        <input name="filtro_turma" type="text"    class="input-filtro"  placeholder="Filtrar por Turma">
         <hr>
         <p>Filtro entre um período específico:</p>
         <p>Primeira Data:</p>
-        <input type='date' class="input-filtro" name='filtro_primeira_data' placeholder='Primeira Data'>
+        <input name="filtro_primeira_data"  type="date" class="input-filtro" placeholder="Primeira Data">
         <p>Segunda Data:</p>
-        <input type='date' class="input-filtro" name='filtro_segunda_data' placeholder='Segunda Data'>
+        <input name="filtro_segunda_data"   type="date" class="input-filtro" placeholder="Segunda Data">
         <hr>
-        <button type='submit' class="sign-btn">Buscar</button>
+        <button type="submit" class="sign-btn"> Buscar </button>
       </form> 
+      
     </dialog>
 
     <!--AQUI É ONDE VAI PEGAR O CONTEÚDO DO ARQUIVO DE CONSULTA-->
@@ -73,8 +75,8 @@
 				});
 			}
 
-      const button = document.querySelector("#abrirmodal")
-      const modal = document.querySelector("#modal")
+      const button      = document.querySelector("#abrirmodal")
+      const modal       = document.querySelector("#modal")
       const buttonClose = document.querySelector("#fechar-consulta")
 
       button.onclick = function() {

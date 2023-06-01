@@ -17,18 +17,18 @@
 include_once("conexao.php");
 
 //Este bloco é responsável pelo sistema de paginação
-$pagina = filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_NUMBER_INT);
-$qnt_result_pg = filter_input(INPUT_POST, 'qnt_result_pg', FILTER_SANITIZE_NUMBER_INT);
+$pagina 		= filter_input(INPUT_POST, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+$qnt_result_pg 	= filter_input(INPUT_POST, 'qnt_result_pg', FILTER_SANITIZE_NUMBER_INT);
 //calcular o inicio visualização
-$inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
+$inicio 		= ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
 if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['filtro_turma']) || isset($_POST['filtro_primeira_data']) || isset($_POST['filtro_segunda_data'])) {
 	
-	$rm = isset($_POST['filtro_rm']) ? $_POST['filtro_rm'] : '';
-	$nome = isset($_POST['filtro_nome']) ? $_POST['filtro_nome'] : '';
-	$turma = isset($_POST['filtro_turma']) ? $_POST['filtro_turma'] : '';
-	$data_inicio = isset($_POST['filtro_primeira_data']) ? $_POST['filtro_primeira_data'] : '';
-	$data_fim = isset($_POST['filtro_segunda_data']) ? $_POST['filtro_segunda_data'] : '';
+	$rm 		= isset($_POST['filtro_rm']) ? $_POST['filtro_rm'] : '';
+	$nome 		= isset($_POST['filtro_nome']) ? $_POST['filtro_nome'] : '';
+	$turma 		= isset($_POST['filtro_turma']) ? $_POST['filtro_turma'] : '';
+	$data_inicio= isset($_POST['filtro_primeira_data']) ? $_POST['filtro_primeira_data'] : '';
+	$data_fim 	= isset($_POST['filtro_segunda_data']) ? $_POST['filtro_segunda_data'] : '';
 
 	// Monta a query base
 	$query = "SELECT * FROM tbregistro WHERE 1=1";
@@ -51,17 +51,15 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 	$query .= " ORDER BY data DESC, hora DESC";
 
 	// Executa a query
-	$resultado_usuario = mysqli_query($conexao, $query);
-
-	$contabilizar = mysqli_num_rows($resultado_usuario);
+	$resultado_usuario 	= mysqli_query($conexao, $query);
+	$contabilizar		= mysqli_num_rows($resultado_usuario);
 
 	//Verificar se encontrou resultado na tabela "tbregistro"
 	if(($resultado_usuario) AND ($resultado_usuario->num_rows != 0)){
 		?>
 		<body>
     
-			<div id="logos"style="">
-				<!--<img id="eteclogo" src="img/etec.png">-->
+			<div id="logos">
 				<img id="cpslogo" src="../img/sp.png">
 			</div>
 
@@ -70,7 +68,7 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 			</div>
 
 			<div class="container">
-				<button class='page-link' onClick='window.print()'>Imprimir</button>
+				<button class='page-link' onClick='window.print()'> Imprimir </button>
 				<!--Tabela que conterá os registros da tabela tbregistro -->
 				<table class="table table-striped table-bordered table-hover float-lg-start table-light">
 					<thead>
@@ -143,16 +141,16 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 
 				// Loop para obter os resultados e adicionar ao array de dados do gráfico
 				while ($row = mysqli_fetch_assoc($resultado_contagem)) {
-					$mes = $row['mes'];
+					$mes 			= $row['mes'];
 					$qtde_registros = $row['qtde_registros'];
-					$mes_nome = DateTime::createFromFormat('!m', $mes)->format('F'); // Obtém o nome do mês
+					$mes_nome 		= DateTime::createFromFormat('!m', $mes)->format('F'); // Obtém o nome do mês
 
 					// Adicione os dados do mês e quantidade de registros ao array
 					$dados_grafico[] = array($mes_nome, $qtde_registros);
 				}
 
 				foreach ($dados_grafico as $dados) {
-					$mes_nome = $dados[0];
+					$mes_nome 		= $dados[0];
 					$qtde_registros = $dados[1];
 
 					echo "['$mes_nome', $qtde_registros],";
@@ -161,9 +159,9 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 				]);
 
 				var options = {
-				title: 'Quantidade de atrasos por mês',
-				curveType: 'function',
-				legend: { position: 'bottom' }
+				title: 		'Quantidade de atrasos por mês',
+				curveType: 	'function',
+				legend: 	{ position: 'bottom' }
 				};
 
 				var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));

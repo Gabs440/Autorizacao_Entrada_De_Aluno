@@ -29,10 +29,10 @@ function showHideInput() {
 
 //VAI VALIDAR SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
 function validateFields() {
-  var rmInput = document.getElementsByName("RM")[0];
+  var rmInput   = document.getElementsByName("RM")[0];
   var nomeInput = document.getElementsByName("nomealuno")[0];
-  var serieInput = document.getElementsByName("serie")[0];
-  var cursoInput = document.getElementsByName("curso")[0];
+  var serieInput= document.getElementsByName("serie")[0];
+  var cursoInput= document.getElementsByName("curso")[0];
 
   if (rmInput.value == "" || nomeInput.value == "" || serieInput.value == "" || cursoInput.value == "") {
     alert("Por favor, preencha todos os campos.");
@@ -48,9 +48,9 @@ SEM PRECISAR ABRIR UMA OUTRA TELA PHP PARA EXIBIR O REGISTRO*/
 function enviarFormulario(event) {
   event.preventDefault();
   if (validateForm() && validateFields()) {
-    var formulario = document.getElementById("form-registro");
-    var dados = new FormData(formulario);
-    var xhr = new XMLHttpRequest();
+    var formulario  = document.getElementById("form-registro");
+    var dados       = new FormData(formulario);
+    var xhr         = new XMLHttpRequest();
     xhr.open("POST", "php/inserir.php");
     xhr.responseType = "json";
     xhr.onload = function() {
