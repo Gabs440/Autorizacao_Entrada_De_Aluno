@@ -51,8 +51,8 @@
   width: 40%;
   margin: 0vh auto 3vh;
   font-family: 'Arial', sans-serif;
-  border: 0.5vh solid #e67833;
   border-radius: 1vh;
+  box-shadow: 0 0 1em rgb(0 0 0 / .5);
 }
 
 @media (max-width: 768px) {
@@ -246,6 +246,7 @@ dialog {
 }
 
 .container{
+  margin: 0 auto;
   padding:10px;
   background-color: #fff;
 }

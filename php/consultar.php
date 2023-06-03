@@ -98,12 +98,14 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 								</tr>
 						<?php
 							}
+
+							echo "Quantidade total de atrasos: " . $contabilizar;
 						?>
 					</tbody>
 				</table>
 			</div>
 
-			<div id="curve_chart" style="width: 100%; height: 500px; align-text: center,"></div>
+			<div id="curve_chart" style="width: 100%; height: 500px; margin: 0 auto;"></div>
   		</body>
 
 		<script type="text/javascript">
@@ -157,6 +159,7 @@ if (isset($_POST['filtro_rm']) || isset($_POST['filtro_nome']) || isset($_POST['
 				}
 				?>
 				]);
+
 
 				var options = {
 				title: 		'Quantidade de atrasos por mês',
